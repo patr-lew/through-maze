@@ -14,7 +14,7 @@ import java.io.File;
 import java.util.LinkedList;
 
 public class Main {
-    static String filePath = "src/resources/examples/perfect2k.png";
+    static String filePath = "src/resources/examples/normal.png";
     static File file = new File(filePath);
 
     public static void main(String[] args) throws Exception {

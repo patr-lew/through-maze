@@ -38,13 +38,9 @@ public class Maze {
             mazeMap[x] = new boolean[width];
             for (int y = 0; y < width; y++) {
                 int rgb = maze.getRGB(y, x);
-                String sign = (rgb > -100) ? "   " : "|||";
                 mazeMap[x][y] = rgb > -500;
-                //System.out.print(sign + "\t");
             }
-            //System.out.println();
         }
-        //System.out.printf("width: %d, height: %d.", width, height);
 
         return mazeMap;
     }
@@ -97,8 +93,8 @@ public class Maze {
                             //System.out.printf("\tNew node at %d, %d\n", y, x);
                             n = new MazeNode(y, x);
                             allNodes.add(n);
-                            leftNode.right = n;
-                            n.left = leftNode;
+                            leftNode.setRight(n);
+                            n.setLeft(leftNode);
                             leftNode = n;
                         }
                     } else {
@@ -106,8 +102,8 @@ public class Maze {
                         n = new MazeNode(y, x);
                         allNodes.add(n);
                         //System.out.printf("\tNew node at %d, %d\n", y, x);
-                        leftNode.right = n;
-                        n.left = leftNode;
+                        leftNode.setRight(n);
+                        n.setLeft(leftNode);
                         leftNode = null;
                     }
                 } else {
@@ -133,8 +129,8 @@ public class Maze {
                     if (mazeMap[y - 1][x]) {
                         MazeNode top = topNodes[x];
                         if (top != null) {
-                            top.down = n;
-                            n.up = top;
+                            top.setDown(n);
+                            n.setUp(top);
                         }
                     }
 
@@ -158,8 +154,8 @@ public class Maze {
                 allNodes.add(end);
                 //System.out.printf("\tNew node at %d, %d\n", height - 1, x);
                 MazeNode t = topNodes[x];
-                t.down = this.end;
-                this.end.up = t;
+                t.setDown(end);
+                end.setUp(t);
                 count++;
                 break;
             }

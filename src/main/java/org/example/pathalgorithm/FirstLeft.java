@@ -61,7 +61,7 @@ public class FirstLeft implements PathFinder {
     private static MazeNode[] getNeighbours(MazeNode node) {
         // N E S W - helpful reminder
         // 0 1 2 3
-        return new MazeNode[]{node.up, node.right, node.down, node.left};
+        return new MazeNode[]{node.getUp(), node.getRight(), node.getDown(), node.getLeft()};
     }
 }
 
