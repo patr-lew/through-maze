@@ -1,8 +1,7 @@
 package org.example.pathalgorithm;
 
-import org.example.Maze;
-import org.example.MazeNode;
-import org.example.PathFinder;
+import org.example.maze.Maze;
+import org.example.maze.MazeNode;
 
 import java.util.LinkedList;
 

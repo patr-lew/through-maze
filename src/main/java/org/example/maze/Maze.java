@@ -1,4 +1,4 @@
-package org.example;
+package org.example.maze;
 
 import java.awt.image.BufferedImage;
 import java.util.HashSet;
@@ -15,7 +15,6 @@ public class Maze {
     public Maze(BufferedImage maze) {
         this.maze = maze;
         this.mazeMap = createMap(maze);
-        createNodes();
     }
 
     public MazeNode getStart() {
@@ -50,7 +49,7 @@ public class Maze {
         return mazeMap;
     }
 
-    private void createNodes() {
+    public void createNodes() {
         int width = maze.getWidth();
         int height = maze.getHeight();
 
