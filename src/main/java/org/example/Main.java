@@ -11,9 +11,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Set;
 
 public class Main {
     static String filePath = "src/resources/examples/perfect2k.png";
@@ -21,7 +19,12 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        BufferedImage mazeImg = readAndSwitchToColor(file);
+        BufferedImage mazeImg = ImageIO.read(file);
+        mazeImg = switchFromBwToColor(mazeImg);
+        System.out.println("loading maze from " + filePath +
+                "\nMaze size: " + mazeImg.getWidth() + " x " + mazeImg.getHeight() +
+                "\nTotal pixels = " + (mazeImg.getWidth() * mazeImg.getHeight()));
+
 
         System.out.println("\n--- MAPPING MAZE ---");
         long start = System.currentTimeMillis();
@@ -53,13 +56,7 @@ public class Main {
 
     }
 
-    private static BufferedImage readAndSwitchToColor(File file) throws IOException {
-        BufferedImage img = ImageIO.read(file);
-        System.out.println("loading maze from " + filePath +
-                "\nMaze size: " + img.getWidth() + " x " + img.getHeight() +
-                "\nTotal pixels = " + (img.getWidth() * img.getHeight()));
-
-
+    private static BufferedImage switchFromBwToColor(BufferedImage img) {
         BufferedImage mazeImg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = mazeImg.createGraphics();
         g.drawImage(img, 0, 0, img.getWidth(), img.getHeight(), null);

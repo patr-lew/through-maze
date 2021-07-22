@@ -5,12 +5,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Maze {
-    private BufferedImage maze;
-    private boolean[][] mazeMap;
+    public Set<MazeNode> allNodes = new HashSet<>();
+    private final BufferedImage maze;
+    private final boolean[][] mazeMap;
     private MazeNode start;
     private MazeNode end;
     private int count;
-    public Set<MazeNode> allNodes = new HashSet<>();
 
     public Maze(BufferedImage maze) {
         this.maze = maze;
