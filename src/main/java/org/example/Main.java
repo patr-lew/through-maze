@@ -4,6 +4,7 @@ import org.example.maze.Maze;
 import org.example.maze.MazeNode;
 import org.example.maze.PathPainter;
 import org.example.maze.RedToBluePathPainter;
+import org.example.pathalgorithm.Dijkstra;
 import org.example.pathalgorithm.FirstLeft;
 import org.example.pathalgorithm.PathFinder;
 
@@ -14,7 +15,7 @@ import java.io.File;
 import java.util.LinkedList;
 
 public class Main {
-    static String filePath = "src/resources/examples/normal.png";
+    static String filePath = "src/resources/examples/logo.png";
     static File file = new File(filePath);
 
     public static void main(String[] args) throws Exception {
@@ -35,7 +36,7 @@ public class Main {
                 "\tNodes created: " + maze.getCount() +
                 "\n\tElapsed time: " + (stop - start) + "ms");
 
-        PathFinder finder = new FirstLeft(maze);
+        PathFinder finder = new Dijkstra(maze);
 
         System.out.println("\n--- CREATING PATH ---");
         start = System.currentTimeMillis();

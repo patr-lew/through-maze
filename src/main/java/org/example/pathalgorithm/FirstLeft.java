@@ -5,11 +5,10 @@ import org.example.maze.MazeNode;
 
 import java.util.LinkedList;
 
-public class FirstLeft implements PathFinder {
-    private Maze maze;
+public class FirstLeft extends PathFinder {
 
     public FirstLeft(Maze maze) {
-        this.maze = maze;
+        super(maze);
     }
 
     @Override

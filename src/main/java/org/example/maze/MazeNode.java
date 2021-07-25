@@ -1,6 +1,7 @@
 package org.example.maze;
 
-import java.util.TreeSet;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 public class MazeNode {
 
@@ -10,11 +11,9 @@ public class MazeNode {
     private MazeNode down;
     private MazeNode left;
     private MazeNode right;
-    private int distanceUp;
-    private int distanceDown;
-    private int distanceLeft;
-    private int distanceRight;
-    private int distance;
+    private HashMap<MazeNode, Integer> adjacentNodes = new HashMap(4);
+    private int distance = Integer.MAX_VALUE;
+    private LinkedList<MazeNode> shortestPath = new LinkedList<>();
 
 
     public MazeNode(int positionY, int positionX) {
@@ -23,26 +22,32 @@ public class MazeNode {
     }
 
     // setters
-
-
     public void setUp(MazeNode up) {
-        this.distanceUp = setDistance(up);
         this.up = up;
+        adjacentNodes.put(up, setDistance(up));
     }
 
     public void setDown(MazeNode down) {
-        this.distanceDown = setDistance(down);
         this.down = down;
+        adjacentNodes.put(down, setDistance(down));
     }
 
     public void setLeft(MazeNode left) {
-        this.distanceLeft = setDistance(left);
         this.left = left;
+        adjacentNodes.put(left, setDistance(left));
     }
 
     public void setRight(MazeNode right) {
-        this.distanceRight = setDistance(right);
         this.right = right;
+        adjacentNodes.put(right, setDistance(right));
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public void setShortestPath(LinkedList<MazeNode> shortestPath) {
+        this.shortestPath = shortestPath;
     }
 
     // getters
@@ -50,6 +55,7 @@ public class MazeNode {
     public int getPositionX() {
         return positionX;
     }
+
     public int getPositionY() {
         return positionY;
     }
@@ -68,6 +74,18 @@ public class MazeNode {
 
     public MazeNode getRight() {
         return right;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public HashMap<MazeNode, Integer> getAdjacentNodes() {
+        return adjacentNodes;
+    }
+
+    public LinkedList<MazeNode> getShortestPath() {
+        return this.shortestPath;
     }
 
     private int setDistance(MazeNode neighbour) {

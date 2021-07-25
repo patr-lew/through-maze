@@ -57,6 +57,7 @@ public class Maze {
         for (int x = 0; x < width; x++) {
             if (mazeMap[0][x]) {
                 this.start = new MazeNode(0, x);
+                start.setDistance(0);
                 allNodes.add(start);
                 //System.out.printf("\tStart node at %d, %d\n", 0, x);
                 topNodes[x] = start;
