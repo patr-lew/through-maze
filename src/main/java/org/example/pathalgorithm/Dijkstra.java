@@ -37,7 +37,9 @@ public class Dijkstra extends PathFinder {
             settledNodes.add(currentNode);
         }
 
-        return new LinkedList<>(settledNodes);
+        LinkedList<MazeNode> shortestPath = end.getShortestPath();
+        shortestPath.add(end);
+        return shortestPath;
     }
 
     private MazeNode getLowestDistanceNode(Set<MazeNode> unsettledNodes) {

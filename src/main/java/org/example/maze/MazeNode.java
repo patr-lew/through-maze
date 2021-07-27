@@ -88,6 +88,14 @@ public class MazeNode {
         return this.shortestPath;
     }
 
+    @Override
+    public String toString() {
+        return "MazeNode{" +
+                "X=" + positionX +
+                ", Y=" + positionY +
+                '}';
+    }
+
     private int setDistance(MazeNode neighbour) {
         return Math.abs(this.positionX - neighbour.positionX) + Math.abs(this.positionY - neighbour.positionY);
     }
